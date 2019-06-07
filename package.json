@@ -1,0 +1,28 @@
+{
+	"name": "@batterii/generator-ts-command",
+	"version": "0.0.0",
+	"description": "Batterii TypeScript command generator",
+	"keywords": [
+		"yeoman-generator"
+	],
+	"author": "Batterii, LLC",
+	"license": "UNLICENSED",
+	"repository": "github:Batterii/generator-ts-command",
+	"files": [
+		"generators"
+	],
+	"scripts": {
+		"lint": "eslint .",
+		"lintf": "eslint . --fix",
+		"preversion": "npm run lint",
+		"prepublishOnly": "git push && git push --tags"
+	},
+	"dependencies": {
+		"@batterii/yeoman-helpers": "0.0.3",
+		"lodash": "^4.17.11"
+	},
+	"devDependencies": {
+		"@batterii/eslint-config-node": "^1.0.3",
+		"eslint": "^5.14.1"
+	}
+}
