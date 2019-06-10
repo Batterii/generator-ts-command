@@ -11,6 +11,7 @@
 	"files": [
 		"generators"
 	],
+	"main": "generators/app/index.js",
 	"scripts": {
 		"lint": "eslint .",
 		"lintf": "eslint . --fix",
