@@ -44,7 +44,7 @@ class CommandGenerator extends Generator {
 
 		// Add a start script for the new command.
 		this.addScripts({
-			[`start:${command}`]: `npm run build && bin/${command}.js`,
+			[`start:${command}`]: `npm run build && dist/bin/${command}.js`,
 		}, overwriteCheck);
 	}
 }
