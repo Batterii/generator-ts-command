@@ -1,6 +1,6 @@
 const { Generator } = require('@batterii/yeoman-helpers');
 const { isString } = require('lodash');
-const { validateName } = require('./utils');
+const { validateCommandName } = require('@batterii/yeoman-validators');
 
 class CommandGenerator extends Generator {
 	constructor(args, opts) {
@@ -12,7 +12,7 @@ class CommandGenerator extends Generator {
 			alias: 'n',
 			description: 'Name of the commmand',
 			message: 'Enter the command name.',
-			validate: validateName,
+			validate: validateCommandName,
 		});
 	}
 
