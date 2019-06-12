@@ -1,6 +1,6 @@
 {
 	"name": "@batterii/generator-ts-command",
-	"version": "0.0.3",
+	"version": "0.0.4",
 	"description": "Batterii TypeScript command generator",
 	"keywords": [
 		"yeoman-generator"
