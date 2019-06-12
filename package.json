@@ -19,7 +19,7 @@
 		"prepublishOnly": "git push && git push --tags"
 	},
 	"dependencies": {
-		"@batterii/yeoman-helpers": "0.0.3",
+		"@batterii/yeoman-helpers": "^0.1.0",
 		"lodash": "^4.17.11"
 	},
 	"devDependencies": {

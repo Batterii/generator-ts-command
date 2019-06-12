@@ -1,50 +1,44 @@
-const { assign, isString } = require('lodash');
 const { Generator } = require('@batterii/yeoman-helpers');
+const { isString } = require('lodash');
+const { validateName } = require('./utils');
 
 class CommandGenerator extends Generator {
 	constructor(args, opts) {
 		super(args, opts);
 
-		this.option('command', {
-			description: 'Command to create in package bin entry',
-			type: String,
+		this.optionPrompt({
+			type: 'input',
+			name: 'name',
+			alias: 'n',
+			description: 'Name of the commmand',
+			message: 'Enter the command name.',
+			validate: validateName,
 		});
 	}
 
-	async promptForOptions() {
-		assign(this.options, await this.prompt([
-			{
-				when: () => !this.options.command,
-				type: 'input',
-				name: 'command',
-				message: 'Enter the command name',
-				validate: (input) => Boolean(input),
-			},
-		]));
-	}
-
 	addCommand() {
-		const { command } = this.options;
+		// Get the command name from options.
+		const { name } = this.options;
 
 		// Copy the new command source file to the bin directory.
-		this.copyTemplate('command.ts', `bin/${command}.ts`);
+		this.copyTemplate('command.ts', `bin/${name}.ts`);
 
 		// Create a customizer function to prevent overwriting of
 		// previously-existing commands.
 		const overwriteCheck = (obj) => {
 			if (isString(obj)) {
-				this.env.error(`Command '${command}' already exists.`);
+				this.env.error(`Command '${name}' already exists.`);
 			}
 		};
 
 		// Add bin entry for the new command in package.json.
 		this.extendPackage({
-			bin: { [command]: `dist/bin/${command}.js` },
+			bin: { [name]: `dist/bin/${name}.js` },
 		}, overwriteCheck);
 
 		// Add a start script for the new command.
 		this.addScripts({
-			[`start:${command}`]: `npm run build && dist/bin/${command}.js`,
+			[`start:${name}`]: `npm run build && dist/bin/${name}.js`,
 		}, overwriteCheck);
 	}
 }
