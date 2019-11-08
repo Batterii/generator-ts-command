@@ -23,8 +23,10 @@ class CommandGenerator extends Generator {
 		// Copy the new command source file to the bin directory.
 		this.copyTemplate('command.ts', `bin/${name}.ts`);
 
-		// Create a customizer function to prevent overwriting of
-		// previously-existing commands.
+		/*
+		 * Create a customizer function to prevent overwriting of
+		 * previously-existing commands.
+		 */
 		const overwriteCheck = (obj) => {
 			if (isString(obj)) {
 				this.env.error(`Command '${name}' already exists.`);
