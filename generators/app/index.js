@@ -20,8 +20,8 @@ class CommandGenerator extends Generator {
 		// Get the command name from options.
 		const { name } = this.options;
 
-		// Copy the new command source file to the bin directory.
-		this.copyTemplate('command.ts', `bin/${name}.ts`);
+		// Copy the new command source file to the src/bin directory.
+		this.copyTemplate('command.ts', `src/bin/${name}.ts`);
 
 		/*
 		 * Create a customizer function to prevent overwriting of
